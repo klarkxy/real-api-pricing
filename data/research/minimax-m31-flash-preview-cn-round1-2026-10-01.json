@@ -1,0 +1,103 @@
+{
+  "checkedAt": "2026-10-01",
+  "model": "minimax-m3.1-flash-preview",
+  "observedModelLabel": "MiniMax-M3.1-Flash-Preview",
+  "displayName": "MiniMax M3.1 Flash Preview",
+  "pricingRegion": "CN",
+  "currency": "CNY",
+  "status": "contributor_approved_provisional_raw_proposal_pending_maintainer_review",
+  "contributorConfirmation": {
+    "date": "2026-10-01",
+    "quote": "这是go，可以，pr过去吧",
+    "confirmed": ["Measured account is Go", "Contributor authorizes the reviewed PR"],
+    "notSeparatelyConfirmed": ["Zero hourly counter at the starting checkpoint", "No other shared-pool consumption", "No historical or promotional extra benefits", "Weekly multipliers and annual quota equivalence"]
+  },
+  "sources": [
+    {"id": "faq_cn", "url": "https://platform.minimax.cn/docs/m-plan/faq", "checkedAt": "2026-10-01", "supports": ["Annual payment equals ten monthly payments", "CN usage ratios 1:3:12", "Modalities and tools share quota", "Independent 5-hour and weekly windows"]},
+    {"id": "intro_cn", "url": "https://platform.minimax.cn/docs/m-plan/intro", "checkedAt": "2026-10-01", "supports": ["M3.1 Flash Preview available in all three tiers", "Explore 3x, Build 12x relative to Go"]},
+    {"id": "legacy_prices_cn", "url": "https://platform.minimax.cn/docs/guides/pricing-token-plan", "checkedAt": "2026-10-01", "note": "Legacy monthly prices 49/119/469 CNY are corroboration only; do not silently replace historical Token Plan rows."},
+    {"id": "migration_cn", "url": "https://platform.minimax.cn/docs/m-plan/token-plan-notice", "checkedAt": "2026-10-01", "note": "Previously reviewed unchanged-price migration notice; legacy benefits and new M Plan remain distinguishable."},
+    {"id": "paygo_cn", "url": "https://platform.minimax.cn/docs/guides/pricing-paygo", "checkedAt": "2026-10-01", "result": "Retrieved table contains M3/M2.x, but no exact M3.1 Flash Preview rate row. Do not reuse M3 rates."}
+  ],
+  "originalEvidence": {
+    "publication": "Original PNGs are retained in the contributor's reviewed submission package. This text submission includes their transcriptions and independently checked SHA-256 hashes, not the binary images. Names below are archive names, not repository paths.",
+    "screenshots": [
+      {"name": "minimax-m-plan-cn-annual-2026-10-01.png", "sha256": "a87d5dca7a1af2b7e7db4a641e42af04bc79d9f205ab4760f8a8a371ff9e3e8a"},
+      {"name": "minimax-m31-start-quota-2026-10-01.png", "sha256": "3801b72c764359bd6d06f7c24419ac203af451575a4977ebb667ca354d0ba5c9"},
+      {"name": "minimax-m31-middle-quota-2026-10-01.png", "sha256": "ae3f7db37d0f8dce2faa3885754f38474ebd8977b7452284f7903101c6c1e7f8"},
+      {"name": "minimax-m31-middle-usage-2026-10-01.png", "sha256": "7421e8a3d6b8eca8196890928c4528cbf45ab5519c79a0122f2bb3f56b95db32"},
+      {"name": "minimax-m31-end-quota-2026-10-01.png", "sha256": "db4f7debd96988ecc9502c9c520cec6ac89de852cb7b553f12b6ace27c9aed7c"},
+      {"name": "minimax-m31-end-usage-2026-10-01.png", "sha256": "0fbcad451859a261cb60fd270594e796a98e11e5b58b32fc9edae0e97a9990b2"}
+    ]
+  },
+  "measurement": {
+    "accountPlan": "Go",
+    "timezone": "UTC+08:00",
+    "hourlyBucket": "2026-10-01 12:00/13:00",
+    "startCheckpointReceivedAt": "2026-10-01T12:01:00+08:00",
+    "exactSamplingTimesKnown": false,
+    "autoCreditConsumption": false,
+    "creditBalanceLabel": "暂无积分",
+    "reasoningTokensSeparatelyReported": false,
+    "checkpoints": [
+      {"id": "start", "fiveHourUsedPercent": 41, "weeklyUsedPercent": 4, "fiveHourResetInMinutes": 96, "weeklyResetLabel": "6天20小时后重置", "hourlyCumulativeTokens": null},
+      {"id": "middle", "fiveHourUsedPercent": 71, "weeklyUsedPercent": 7, "fiveHourResetInMinutes": 82, "weeklyResetLabel": "6天20小时后重置", "hourlyCumulativeTokens": 11768772},
+      {"id": "end", "fiveHourUsedPercent": 100, "weeklyUsedPercent": 10, "fiveHourResetInMinutes": 52, "weeklyResetLabel": "6天19小时后重置", "hourlyCumulativeTokens": 23970451}
+    ]
+  },
+  "calculations": {
+    "monthWeeks": 4,
+    "repositoryCnyPerUsd": 6.7787,
+    "exchangeRateNote": "Existing repository comparison constant, not a newly fetched exchange rate.",
+    "prices": [
+      {"plan": "Go", "monthlyCny": 49, "annualCny": 490, "annualMonthlyEquivalentCnyExact": "490/12", "usageRelativeToGo": 1, "screenshotStruckThroughAnnualCny": 588},
+      {"plan": "Explore", "monthlyCny": 119, "annualCny": 1190, "annualMonthlyEquivalentCnyExact": "1190/12", "usageRelativeToGo": 3, "screenshotStruckThroughAnnualCny": 1490},
+      {"plan": "Build", "monthlyCny": 469, "annualCny": 4690, "annualMonthlyEquivalentCnyExact": "4690/12", "usageRelativeToGo": 12, "screenshotStruckThroughAnnualCny": 5628}
+    ],
+    "monthlyPriceBasis": "Actual annual screenshot price divided by ten using the official FAQ; do not use struck-through prices or first-month promotions.",
+    "usage": {
+      "midBucketCumulative": {"input": 544999, "output": 145400, "cacheRead": 11078373, "cacheWrite": 0},
+      "endBucketCumulative": {"input": 835462, "output": 319359, "cacheRead": 22815630, "cacheWrite": 0},
+      "midToEndDelta": {"input": 290463, "output": 173959, "cacheRead": 11737257, "cacheWrite": 0},
+      "midBucketTotal": 11768772,
+      "endBucketTotal": 23970451,
+      "midToEndDeltaTotal": 12201679,
+      "fullSegmentRawFormula": "23970451 / 0.06 * monthWeeks",
+      "goMonthlyTokensAtFourWeeks": 1598030066.6666667,
+      "goMonthlyYiAtFourWeeks": 15.980300666666666,
+      "goWeeklyTokens": 399507516.6666667,
+      "fiveHourTokensEstimate": 40627883.050847456,
+      "goMonthlyYiRoundingSensitivity": [13.697400571428572, 19.1763608],
+      "roundingSensitivityNote": "Displayed 6pp with consistent endpoint integer rounding implies approximately 5 to 7pp. Not a statistical confidence interval; excludes lag, baseline mismatch and unrelated usage.",
+      "midToEndGoMonthlyYiAtFourWeeks": 16.268905333333333,
+      "endWholeBucketMix": {"cacheRead": 0.9518231425850102, "input": 0.034853828991369414, "output": 0.013323028423620398},
+      "displayedInputCacheHitPercent": 96.5
+    }
+  },
+  "normalization": {
+    "rawOnly": true,
+    "workload": "measured",
+    "listWorth": null,
+    "officialM31PriceRatiosVerified": false,
+    "proposal": "Explicit temporary exception for maintainer review. Preserve raw estimates until model-specific price ratios are verified; never silently borrow M3 prices. Other normalization rules are unchanged."
+  },
+  "proposedAdoption": {
+    "rowCount": 6,
+    "goMonthlyConfidence": "medium",
+    "annualOrCrossTierConfidence": "low",
+    "annualFeeBasis": "Upfront annual CNY divided by 12, without rounding cents before unit-price calculation; same tier quota assumed, not independently measured.",
+    "crossTierBasis": "Go baseline multiplied by 3 or 12; assumes advertised ratio applies to the weekly pool.",
+    "preserveLegacyTokenPlanRows": true,
+    "scores": null,
+    "apiListPrices": null
+  },
+  "limitations": [
+    "Go was explicitly confirmed. A zero hourly counter at the 12:01 starting checkpoint and exclusive shared-pool use were not separately confirmed.",
+    "Full-segment arithmetic is conditional on no 12:00-to-start usage. Mid-to-end differences are retained separately; cumulative readings must not be added together.",
+    "5h observation is 41% to 100%, not a complete 0% to 100% window; clipping or overshoot at 100% is possible.",
+    "Explore struck-through 1490 differs from 119*12=1428. Preserve this conflict; annual/10 determines the proposed monthly price.",
+    "Input cache-hit rate and whole-token cache share have different denominators. This workload is not the repository's standard 97/2.5/0.5 mix.",
+    "Annual and cross-tier allowances are assumptions, not independent measurements or official fixed token entitlements.",
+    "No M3 score or API price is assigned to M3.1. Four weeks/month is a saturated-use comparison convention, not a promise of achievable usage."
+  ]
+}
