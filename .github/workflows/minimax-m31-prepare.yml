@@ -38,10 +38,26 @@ jobs:
           python -m pip install -r requirements.txt
           npm ci
           npm --prefix web ci
-      - name: Apply reviewed source changes
+      - name: Apply reviewed source changes and explicit English chart labels
         run: |
           cp data/adopted.csv /tmp/adopted-before-m31.csv
           python scripts/prepare_minimax_m31_pr.py
+          python - <<'PY'
+          from pathlib import Path
+          import ast
+          path = Path('scripts/plot_quotas.py')
+          text = path.read_text(encoding='utf-8')
+          anchor = '        translations = {\n'
+          assert text.count(anchor) == 1, 'Translation anchor changed; stop for review'
+          additions = ''.join(
+              f'            "MiniMax M Plan {tier} (CN{suffix})": "MiniMax M Plan {tier}{label}",\n'
+              for tier in ('Go', 'Explore', 'Build')
+              for suffix, label in (('', ''), (' Annual', ' (Annual)'))
+          )
+          text = text.replace(anchor, anchor + additions, 1)
+          ast.parse(text)
+          path.write_text(text, encoding='utf-8')
+          PY
       - name: Generate data and charts and run all checks
         run: |
           python scripts/build_adopted.py > /tmp/m31-build.log
@@ -80,13 +96,12 @@ jobs:
           assert old_rows('/tmp/adopted-before-m31.csv') == old_rows('data/adopted.csv')
           print('PASS: all existing adopted rows unchanged')
           PY
-      - name: Commit generated contribution and remove preparation-only files
+      - name: Commit generated contribution
         run: |
           test "$(git branch --show-current)" = data/minimax-m31-flash-preview-cn-20261001
-          rm .github/workflows/minimax-m31-prepare.yml scripts/prepare_minimax_m31_pr.py
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- scripts/build_adopted.py scripts/compute.py scripts/minimax_m31_rows.py scripts/checks/verify_minimax_m31.py scripts/prepare_minimax_m31_pr.py .github/workflows/minimax-m31-prepare.yml CONVENTIONS.md DECISIONS.md data derived charts README.md README.zh.md
+          git add -- scripts/build_adopted.py scripts/compute.py scripts/plot_quotas.py scripts/minimax_m31_rows.py scripts/checks/verify_minimax_m31.py CONVENTIONS.md DECISIONS.md data derived charts README.md README.zh.md
           git commit -m 'Data: adopt provisional M3.1 CN monthly/annual points and regenerate outputs'
           git push origin HEAD:refs/heads/data/minimax-m31-flash-preview-cn-20261001
       - name: Print build-log tail on failure
