@@ -47,14 +47,18 @@ jobs:
           import ast
           path = Path('scripts/plot_quotas.py')
           text = path.read_text(encoding='utf-8')
-          anchor = '        translations = {\n'
-          assert text.count(anchor) == 1, 'Translation anchor changed; stop for review'
-          additions = ''.join(
-              f'            "MiniMax M Plan {tier} (CN{suffix})": "MiniMax M Plan {tier}{label}",\n'
-              for tier in ('Go', 'Explore', 'Build')
-              for suffix, label in (('', ''), (' Annual', ' (Annual)'))
+          anchor = 'def plan_name(row: dict, language: str) -> str:\n'
+          assert text.count(anchor) == 1, 'Reviewed plan_name anchor changed'
+          addition = (
+              '    if language == "en" and row["plan_id"].startswith("minimax_m_plan_"):\n'
+              '        names = {\n'
+              + ''.join(f'            "MiniMax M Plan {tier} (CN{suffix})": "MiniMax M Plan {tier}{label}",\n'
+                        for tier in ('Go', 'Explore', 'Build')
+                        for suffix, label in (('', ''), (' Annual', ' (Annual)')))
+              + '        }\n'
+              '        return names.get(row["plan_name"], row["plan_name"])\n'
           )
-          text = text.replace(anchor, anchor + additions, 1)
+          text = text.replace(anchor, anchor + addition, 1)
           ast.parse(text)
           path.write_text(text, encoding='utf-8')
           PY
